@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+	# RewriteCond %{REQUEST_FILENAME} !-d
+
+	RewriteRule ^(.+)$ index.php?arg=$1 [QSA,L]
+</IfModule>
+
+#<FilesMatch "\.">
+#	Order Allow,Deny
+#	Deny from all
+#</FilesMatch>
+<FilesMatch "\.(js|css)$">
+	Order Allow,Deny
+	Allow from all
+</FilesMatch>
+<FilesMatch "index\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
